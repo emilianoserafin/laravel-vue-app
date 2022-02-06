@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\PropertiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,14 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+Route::middleware('auth:sanctum', 'verified')->group(function () {
+
+    Route::get('/dashboard/properties', [PropertiesController::class, 'index']);
+    Route::get('/properties/create', [PropertiesController::class, 'create']);
+    Route::post('/properties', [PropertiesController::class, 'store']);
+
+    Route::get('/dashboard/services', function () {
+        return Inertia::render('Services');
+    });
+});
