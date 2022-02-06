@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Property;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        //creates 4 users
+        $users = User::factory(4)->create();
+        //creates 7 Properties
+        Property::factory(7)->create(
+            (function () use ($users) {
+                return [
+                    'user_id' => $users->random()->id,
+                ];
+            })
+        );
     }
 }
