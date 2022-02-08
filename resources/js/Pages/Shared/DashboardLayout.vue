@@ -9,9 +9,9 @@
         </template>
         <section class="flex">
             <!-- SIDE MENU -->
-            <div class="flex-grow max-w-xs bg-slate-800 min-h-screen">
+
                 <sidebar-menu />
-            </div>
+
             <slot />
         </section>
 
@@ -28,6 +28,9 @@
             AppLayout,
             SidebarMenu,
         },
+        props: {
+
+        }
 
     })
 </script>
