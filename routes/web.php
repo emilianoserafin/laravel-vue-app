@@ -30,8 +30,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware('auth:sanctum', 'verified')->group(function () {
 
     Route::get('/dashboard/properties', [PropertiesController::class, 'index']);
-    Route::get('/properties/create', [PropertiesController::class, 'create']);
-    Route::post('/properties', [PropertiesController::class, 'store']);
+    Route::post('/dashboard/properties', [PropertiesController::class, 'create']);
+
 
     Route::get('/dashboard/services', function () {
         return Inertia::render('Services');

@@ -20,8 +20,22 @@ class PropertiesController extends Controller
         return Inertia::render('Properties')->with('properties', $properties);
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        if (auth()->user()->id === $request->user_id) {
+
+            $newProperty = $request->validate([
+                'user_id' => ['required'],
+                'street_address' => 'required',
+                'city' => 'required',
+                'province' => 'required',
+                'postal_code' => 'required',
+            ]);
+        }
+
+        Property::create($newProperty);
+
+        return;
     }
 
     public function store()
