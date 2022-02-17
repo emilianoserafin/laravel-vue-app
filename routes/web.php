@@ -31,6 +31,8 @@ Route::middleware('auth:sanctum', 'verified')->group(function () {
 
     Route::get('/dashboard/properties', [PropertiesController::class, 'index']);
     Route::post('/dashboard/properties', [PropertiesController::class, 'create']);
+    Route::delete('/properties', [PropertiesController::class, 'destroy']);
+    Route::patch('/dashboard/properties', [PropertiesController::class, 'update']);
 
 
     Route::get('/dashboard/services', function () {

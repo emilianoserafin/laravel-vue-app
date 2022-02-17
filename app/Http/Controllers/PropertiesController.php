@@ -34,11 +34,16 @@ class PropertiesController extends Controller
         }
 
         Property::create($newProperty);
-
-        return;
     }
 
-    public function store()
+    public function update(Request $request)
     {
+        dd($request);
+    }
+
+    public function destroy(Request $request)
+    {
+        $id = $request->id;
+        Property::where('id', $id)->delete();
     }
 }

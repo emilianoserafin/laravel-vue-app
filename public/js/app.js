@@ -20683,10 +20683,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Modal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Modal.vue */ "./resources/js/Pages/Components/Modal.vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
-
-
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_1__.defineComponent)({
@@ -20721,6 +20717,62 @@ __webpack_require__.r(__webpack_exports__);
         province: '',
         postal_code: ''
       })
+    };
+  }
+}));
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Modal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Modal.vue */ "./resources/js/Pages/Components/Modal.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_1__.defineComponent)({
+  props: ['show', 'id', 'streetAddress', 'city', 'province', 'postalCode', 'userId'],
+  components: {
+    Modal: _Modal_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  computed: {},
+  methods: {
+    close: function close() {
+      this.$emit('close');
+    },
+    update: function update() {
+      var _this = this;
+
+      //this.form.post(route(''));
+      this.$inertia.post('/dashboard/properties', this.form).then(function (response) {
+        //alert('Property Added Successfully!');
+        window.location.reload(true);
+      })["catch"](function (error) {
+        if (error.response.status === 422) {
+          _this.errors = error.response.data.errors || {};
+        }
+      });
+    }
+  },
+  data: function data() {
+    return {
+      form: {
+        _method: 'PATCH',
+        id: this.id,
+        user_id: this.userId,
+        street_address: this.streetAddress,
+        city: this.city,
+        province: this.province,
+        postal_code: this.postalCode
+      }
     };
   }
 }));
@@ -20826,12 +20878,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _EditPropertyModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditPropertyModal.vue */ "./resources/js/Pages/Components/EditPropertyModal.vue");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {};
+  name: 'PropertyCard',
+  components: {
+    EditPropertyModal: _EditPropertyModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: {},
-  components: {}
+  data: function data() {
+    return {
+      activeModal: 0
+    };
+  },
+  props: ['id', 'streetAddress', 'city', 'province', 'postalCode', 'userId'],
+  methods: {
+    destroy: function destroy(id) {
+      if (confirm('Are you sure you want to delete this property?')) {
+        axios.post("/properties", {
+          _method: 'delete',
+          id: id
+        });
+        window.location.reload(true);
+      }
+    },
+    showModal: function showModal() {
+      return this.activeModal === 1;
+    },
+    toggleModal: function toggleModal() {
+      if (this.activeModal !== 0) {
+        this.activeModal = 0;
+        return false;
+      }
+
+      this.activeModal = 1;
+    }
+  }
 });
 
 /***/ }),
@@ -24805,6 +24886,172 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=template&id=5c634a84":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=template&id=5c634a84 ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "mt-5 md:mt-0 md:col-span-2"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  "class": "text-3xl text-slate-600 py-5 mb-4 text-left"
+}, "Edit Property Details", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = {
+  "class": "shadow overflow-hidden sm:rounded-md"
+};
+var _hoisted_4 = {
+  "class": "px-4 py-6 bg-white sm:p-6"
+};
+var _hoisted_5 = {
+  "class": "grid grid-cols-6 gap-6"
+};
+var _hoisted_6 = {
+  "class": "col-span-6"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "street_address",
+  "class": "block text-sm font-medium text-gray-700"
+}, "Street address", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "col-span-6 sm:col-span-6 lg:col-span-2"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "city",
+  "class": "block text-sm font-medium text-gray-700"
+}, "City", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "col-span-6 sm:col-span-3 lg:col-span-2"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "province",
+  "class": "block text-sm font-medium text-gray-700"
+}, "Province", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "col-span-6 sm:col-span-3 lg:col-span-2"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "postal_code",
+  "class": "block text-sm font-medium text-gray-700"
+}, "Postal code", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = {
+  "class": "flex px-4 py-3 bg-gray-50 text-right sm:px-6 justify-between"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+}, "Update", -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("modal");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_modal, {
+    show: _ctx.show,
+    onClose: _ctx.close
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+        onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+          return _ctx.update && _ctx.update.apply(_ctx, arguments);
+        }, ["prevent"]))
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+          return _ctx.streetAddress = $event;
+        }),
+        required: "",
+        type: "text",
+        name: "street_address",
+        id: "street_address",
+        autocomplete: "street-address",
+        "class": "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.streetAddress]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+          return _ctx.city = $event;
+        }),
+        type: "text",
+        required: "",
+        name: "city",
+        id: "city",
+        autocomplete: "address-level2",
+        "class": "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.city]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+          return _ctx.province = $event;
+        }),
+        type: "text",
+        required: "",
+        name: "province",
+        id: "province",
+        autocomplete: "address-level1",
+        "class": "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.province]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+          return _ctx.postalCode = $event;
+        }),
+        type: "text",
+        required: "",
+        name: "postal_code",
+        id: "postalcode",
+        autocomplete: "postal-code",
+        "class": "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.postalCode]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        onClick: _cache[4] || (_cache[4] = function () {
+          return _ctx.close && _ctx.close.apply(_ctx, arguments);
+        }),
+        "class": "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 mr-3 cursor-pointer"
+      }, "Cancel"), _hoisted_15])])], 32
+      /* HYDRATE_EVENTS */
+      )])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show", "onClose"])]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Components/HeroSection.vue?vue&type=template&id=deed484a":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Components/HeroSection.vue?vue&type=template&id=deed484a ***!
@@ -24884,8 +25131,44 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "flex flex-col justify-between items-center p-3 m-4 border rounded-md bg-slate-200 w-64 h-64 shadow-md"
 };
+var _hoisted_2 = {
+  "class": "flex justify-end"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "propertyInfo")]);
+  var _component_EditPropertyModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("EditPropertyModal");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Street: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.streetAddress), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "City: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.city), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Province: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.province), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Postal Code: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.postalCode), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.toggleModal();
+    }),
+    "class": "py-1 px-3 bg-blue-600 hover:bg-blue-400 rounded-md text-white mx-2"
+  }, "Edit"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $options.destroy($props.id);
+    }, ["prevent"])),
+    "class": "py-1 px-3 bg-red-600 hover:bg-red-400 rounded-md text-white mx-2"
+  }, "Delete")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_EditPropertyModal, {
+    show: $options.showModal(),
+    onClose: _cache[2] || (_cache[2] = function ($event) {
+      return $options.toggleModal();
+    }),
+    id: $props.id,
+    streetAddress: $props.streetAddress,
+    city: $props.city,
+    province: $props.province,
+    postalCode: $props.postalCode,
+    userId: $props.userId
+  }, null, 8
+  /* PROPS */
+  , ["show", "id", "streetAddress", "city", "province", "postalCode", "userId"])]);
 }
 
 /***/ }),
@@ -26026,23 +26309,6 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "flex flex-col sm:flex-row flex-wrap"
 };
-
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": ""
-}, " IMAGE ", -1
-/* HOISTED */
-);
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex justify-end"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "py-1 px-3 bg-blue-600 hover:bg-blue-400 rounded-md text-white mx-2"
-}, "Edit"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "py-1 px-3 bg-red-600 hover:bg-red-400 rounded-md text-white mx-2"
-}, "Delete")], -1
-/* HOISTED */
-);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_PropertyCard = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PropertyCard");
 
@@ -26055,25 +26321,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["stop"]))
   }, "Add Property"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.properties, function (property) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_PropertyCard, {
-      key: property
-    }, {
-      propertyInfo: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Street: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(property.street_address), 1
-        /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "City: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(property.city), 1
-        /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Province: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(property.province), 1
-        /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Postal Code: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(property.postal_code), 1
-        /* TEXT */
-        ), _hoisted_4];
-      }),
-      _: 2
-      /* DYNAMIC */
-
-    }, 1024
-    /* DYNAMIC_SLOTS */
-    );
+      key: property.id,
+      id: property.id,
+      streetAddress: property.street_address,
+      city: property.city,
+      province: property.province,
+      postalCode: property.postal_code,
+      userId: property.user_id
+    }, null, 8
+    /* PROPS */
+    , ["id", "streetAddress", "city", "province", "postalCode", "userId"]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_add_property_modal, {
@@ -51966,6 +52223,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Components/EditPropertyModal.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/Pages/Components/EditPropertyModal.vue ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _EditPropertyModal_vue_vue_type_template_id_5c634a84__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditPropertyModal.vue?vue&type=template&id=5c634a84 */ "./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=template&id=5c634a84");
+/* harmony import */ var _EditPropertyModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditPropertyModal.vue?vue&type=script&lang=js */ "./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _Users_mil_DEV_Laravel_Inertia_vue_app_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_Users_mil_DEV_Laravel_Inertia_vue_app_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditPropertyModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditPropertyModal_vue_vue_type_template_id_5c634a84__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Components/EditPropertyModal.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Components/HeroSection.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/Pages/Components/HeroSection.vue ***!
@@ -52963,6 +53248,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=script&lang=js":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=script&lang=js ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditPropertyModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditPropertyModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./EditPropertyModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Components/HeroSection.vue?vue&type=script&lang=js":
 /*!*******************************************************************************!*\
   !*** ./resources/js/Pages/Components/HeroSection.vue?vue&type=script&lang=js ***!
@@ -53811,6 +54112,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=template&id=5c634a84":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=template&id=5c634a84 ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditPropertyModal_vue_vue_type_template_id_5c634a84__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditPropertyModal_vue_vue_type_template_id_5c634a84__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./EditPropertyModal.vue?vue&type=template&id=5c634a84 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Components/EditPropertyModal.vue?vue&type=template&id=5c634a84");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Components/HeroSection.vue?vue&type=template&id=deed484a":
 /*!*************************************************************************************!*\
   !*** ./resources/js/Pages/Components/HeroSection.vue?vue&type=template&id=deed484a ***!
@@ -54369,6 +54686,7 @@ var map = {
 	"./Auth/TwoFactorChallenge.vue": "./resources/js/Pages/Auth/TwoFactorChallenge.vue",
 	"./Auth/VerifyEmail.vue": "./resources/js/Pages/Auth/VerifyEmail.vue",
 	"./Components/AddPropertyModal.vue": "./resources/js/Pages/Components/AddPropertyModal.vue",
+	"./Components/EditPropertyModal.vue": "./resources/js/Pages/Components/EditPropertyModal.vue",
 	"./Components/HeroSection.vue": "./resources/js/Pages/Components/HeroSection.vue",
 	"./Components/Modal.vue": "./resources/js/Pages/Components/Modal.vue",
 	"./Components/PropertyCard.vue": "./resources/js/Pages/Components/PropertyCard.vue",

@@ -42,9 +42,8 @@
 
 <script>
     import Modal from './Modal.vue'
-    import {defineComponent, reactive} from 'vue'
-    import { Inertia } from '@inertiajs/inertia'
-    import { useForm } from '@inertiajs/inertia-vue3'
+    import {defineComponent} from 'vue'
+
 
     export default defineComponent({
         props: [
