@@ -10,22 +10,22 @@
 
                 <div class="col-span-6">
                   <label for="street_address" class="block text-sm font-medium text-gray-700">Street address</label>
-                  <input v-model="streetAddress" required type="text" name="street_address" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                  <input v-model="form.street_address" required type="text" name="street_address" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                   <label for="city" class="block text-sm font-medium text-gray-700">City</label>
-                  <input v-model="city" type="text" required name="city" id="city" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                  <input v-model="form.city" type="text" required name="city" id="city" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                   <label for="province" class="block text-sm font-medium text-gray-700">Province</label>
-                  <input v-model="province" type="text" required name="province" id="province" autocomplete="address-level1" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                  <input v-model="form.province" type="text" required name="province" id="province" autocomplete="address-level1" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                   <label for="postal_code" class="block text-sm font-medium text-gray-700">Postal code</label>
-                  <input v-model="postalCode" type="text" required name="postal_code" id="postalcode" autocomplete="postal-code" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                  <input v-model="form.postal_code" type="text" required name="postal_code" id="postalcode" autocomplete="postal-code" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                 </div>
               </div>
             </div>
@@ -60,15 +60,11 @@
                 this.$emit('close')
             },
             update(){
-                //this.form.post(route(''));
-                this.$inertia.post('/dashboard/properties', this.form).then(response => {
-                    //alert('Property Added Successfully!');
+
+                if(confirm('Is this information correct?')){
+                    axios.patch('/dashboard/properties', this.form)
                     window.location.reload(true);
-                }).catch(error => {
-                    if (error.response.status === 422) {
-                    this.errors = error.response.data.errors || {};
-                    }
-                });
+                }
             }
         },
         data(){

@@ -1,5 +1,5 @@
 <template>
-<transition name="slide-in">
+<transition>
 <div v-if="show" class="flex-grow max-w-xs bg-slate-800 min-h-screen">
     <div @click="show = !show" class="text-lg text-white border-solid border-2 border-sky-500 w-10 h-10 text-center float-right m-4">>></div>
     <nav class="mt-20 min-w-full flex flex-col divide-y divide-solid divide-slate-600">
@@ -42,11 +42,16 @@ export default {
 </script>
 
 <style scoped>
-.slide-in-enter-active {
-  transition: all 0.5s ease-in;
+/* we will explain what these classes do next! */
+.v-enter-active {
+  animation: transform 0.5s ease;
+}
+.v-leave-active {
+  animation: transform 0.5s ease reverse;
 }
 
-.slide-in-enter-from{
-  transform: translateX(50px);
+.v-enter-from,
+.v-leave-to {
+  transform: translateX(10%);
 }
 </style>

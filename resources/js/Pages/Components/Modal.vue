@@ -2,7 +2,7 @@
 <template>
     <transition name="modal">
         <div class="modal-mask"  v-show="show">
-            <div class="flex flex-col w-10/12 h-fit sm:w-3/5 modal-container justify-between overflow-auto" >
+            <div class="flex flex-col w-10/12 h-fit sm:w-3/5 modal-container justify-between overflow-auto rounded" >
 
                 <slot></slot>
 

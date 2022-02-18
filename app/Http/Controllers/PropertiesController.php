@@ -38,7 +38,8 @@ class PropertiesController extends Controller
 
     public function update(Request $request)
     {
-        dd($request);
+        $property = Property::findOrFail($request->id);
+        $property->update($request->all());
     }
 
     public function destroy(Request $request)
