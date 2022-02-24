@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Property;
+use Twilio\Rest\Client;
+
+require_once '/Users/mil/DEV/Laravel-Inertia/vue-app/vendor/autoload.php';
 
 class PropertiesController extends Controller
 {
@@ -34,17 +37,39 @@ class PropertiesController extends Controller
         }
 
         Property::create($newProperty);
+
+        $phone = auth()->user()->phone;
+
+        // $this->sendMessage("New Property Added!", $phone);
     }
 
     public function update(Request $request)
     {
         $property = Property::findOrFail($request->id);
         $property->update($request->all());
+
+        $phone = auth()->user()->phone;
+
+        //$this->sendMessage("Property Updated!", $phone);
     }
 
     public function destroy(Request $request)
     {
         $id = $request->id;
         Property::where('id', $id)->delete();
+
+        $phone = auth()->user()->phone;
+
+        //$this->sendMessage("Property Deleted!",$phone);
+    }
+
+    private function sendMessage($message, $recipients)
+    {
+        $account_sid = getenv("TWILIO_SID");
+        $auth_token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_msg_id = getenv("TWILIO_MSG_ID");
+        $client = new Client($account_sid, $auth_token);
+        $message = $client->messages->create($recipients, ['messagingServiceSid' => $twilio_msg_id, 'body' => $message]);
+        print($message->sid);
     }
 }
