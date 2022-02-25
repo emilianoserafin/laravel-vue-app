@@ -3,6 +3,7 @@ require('./bootstrap');
 import { createApp, h } from 'vue';
 import { createInertiaApp, Link, Head } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
+import SidebarMenu from './Pages/Shared/SidebarMenu.vue';
 
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
@@ -16,6 +17,7 @@ createInertiaApp({
             .mixin({ methods: { route } })
             .component("Link", Link)
             .component("Head", Head)
+            .component("SidebarMenu", SidebarMenu)
             .mount(el);
     },
 });

@@ -947,6 +947,10 @@ select {
 .relative {
   position: relative;
 }
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
 .inset-0 {
   top: 0px;
   right: 0px;
@@ -1067,6 +1071,12 @@ select {
 .mt-20 {
   margin-top: 5rem;
 }
+.mb-20 {
+  margin-bottom: 5rem;
+}
+.mr-8 {
+  margin-right: 2rem;
+}
 .block {
   display: block;
 }
@@ -1119,6 +1129,24 @@ select {
 }
 .min-h-screen {
   min-height: 100vh;
+}
+.min-h-full {
+  min-height: 100%;
+}
+.min-h-min {
+  min-height: -webkit-min-content;
+  min-height: -moz-min-content;
+  min-height: min-content;
+}
+.min-h-max {
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
+}
+.min-h-fit {
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
 }
 .w-5 {
   width: 1.25rem;
@@ -1591,6 +1619,15 @@ select {
 }
 .pr-2 {
   padding-right: 0.5rem;
+}
+.pb-12 {
+  padding-bottom: 3rem;
+}
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+.pb-2 {
+  padding-bottom: 0.5rem;
 }
 .text-left {
   text-align: left;

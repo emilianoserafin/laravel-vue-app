@@ -60,7 +60,7 @@ class PropertiesController extends Controller
 
         $phone = auth()->user()->phone;
 
-        //$this->sendMessage("Property Deleted!",$phone);
+        //$this->sendMessage("Property Deleted!", $phone);
     }
 
     private function sendMessage($message, $recipients)
